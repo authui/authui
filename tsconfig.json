@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "jsx": "react",
+    "types": ["node", "jest"],
+    "strict": true
+  },
+  "exclude": ["node_modules"]
+}

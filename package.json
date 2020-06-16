@@ -1,0 +1,102 @@
+{
+  "name": "authui",
+  "version": "0.0.1",
+  "private": true,
+  "main": "dist/js/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/js/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build:lib": "yarn clean && yarn build:babel && yarn build:types && node ./scripts/copyTS.js",
+    "build:babel": "concurrently \"yarn build:babel:esm && yarn build:babel:umd\" \"yarn build:babel:cjs\"",
+    "build:babel:cjs": "BABEL_ENV=cjs babel src/index_build.ts --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js",
+    "build:babel:esm": "BABEL_ENV=esm babel src/index_build.ts --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
+    "build:babel:umd": "BABEL_ENV=umd babel src/index_build.ts --source-maps --extensions \".js\" dist/esm --out-dir dist/umd --plugins=transform-es2015-modules-umd",
+    "build:types": "tsc -p tsconfig.gen-dts.json",
+    "clean": "rimraf dist",
+    "develop": "yarn build:types && yarn build:babel:esm --skip-initial-build --watch --verbose"
+  },
+  "dependencies": {
+    "es5-html-elements": "^0.0.2",
+    "graphql-request": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-hook-form": "^5.7.2",
+    "react-native": "^0.62.2",
+    "react-native-web": "^0.12.3",
+    "styled-components": "^5.1.1",
+    "tailwind-rn": "^1.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@storybook/addon-centered": "^5.3.18",
+    "@storybook/addon-docs": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "@testing-library/react": "^10.0.4",
+    "@types/jest": "^26.0.0",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-native": "^0.62.8",
+    "@types/styled-components": "^5.1.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-react-docgen": "^4.1.0",
+    "babel-plugin-react-native-web": "^0.12.2",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-plugin-typescript-to-proptypes": "^1.2.1",
+    "babel-polyfill": "^6.26.0",
+    "concurrently": "^5.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^26.0.1",
+    "jest-environment-jsdom": "^26.0.1",
+    "jest-image-snapshot": "^4.0.0",
+    "jest-preset-typescript-react-native": "^1.2.0",
+    "jsdom-screenshot": "^3.2.0",
+    "puppeteer": "^3.1.0",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "ts-jest": "^26.1.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "jest": {
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$",
+    "transform": {
+      "^.+\\.(js)$": "babel-jest",
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src",
+      "__tests__"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup.js"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\](?!es5-html-elements/).+\\.js$"
+    ],
+    "modulePaths": [],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+    }
+  }
+}
