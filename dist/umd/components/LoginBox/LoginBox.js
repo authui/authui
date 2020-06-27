@@ -2,17 +2,17 @@
 
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["exports", "react-hook-form", "./LoginBoxUtils", "es5-html-elements", "react", "tailwind-rn", "react-native-web/dist/cjs/exports/Text", "react-native-web/dist/cjs/exports/View", "react-native-web/dist/cjs/exports/Button"], factory);
+    define(["exports", "react-hook-form", "./LoginBoxUtils", "react", "tailwind-rn", "react-native-web/dist/cjs/exports/Text", "react-native-web/dist/cjs/exports/View", "react-native-web/dist/cjs/exports/Button"], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require("react-hook-form"), require("./LoginBoxUtils"), require("es5-html-elements"), require("react"), require("tailwind-rn"), require("react-native-web/dist/cjs/exports/Text"), require("react-native-web/dist/cjs/exports/View"), require("react-native-web/dist/cjs/exports/Button"));
+    factory(exports, require("react-hook-form"), require("./LoginBoxUtils"), require("react"), require("tailwind-rn"), require("react-native-web/dist/cjs/exports/Text"), require("react-native-web/dist/cjs/exports/View"), require("react-native-web/dist/cjs/exports/Button"));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.reactHookForm, global.LoginBoxUtils, global.es5HtmlElements, global.react, global.tailwindRn, global.Text, global.View, global.Button);
+    factory(mod.exports, global.reactHookForm, global.LoginBoxUtils, global.react, global.tailwindRn, global.Text, global.View, global.Button);
     global.undefined = mod.exports;
   }
-})(void 0, function (exports, _reactHookForm, _LoginBoxUtils, _es5HtmlElements) {
+})(void 0, function (exports, _reactHookForm, _LoginBoxUtils) {
   "use strict";
 
   Object.defineProperty(exports, "__esModule", {
@@ -106,7 +106,7 @@
     return _extends.apply(this, arguments);
   }
 
-  var _default = () => {
+  function LoginBox(props) {
     const [errorText, setErrorText] = React.useState('');
     const [isSubmitting, setIsSubmitting] = React.useState(false);
     const [mode, setMode] = React.useState(_LoginBoxUtils.ModeType.SignUp);
@@ -115,8 +115,8 @@
       handleSubmit,
       errors
     } = (0, _reactHookForm.useForm)();
-    return /*#__PURE__*/React.createElement(_LoginBoxUtils.Container, null, /*#__PURE__*/React.createElement(_es5HtmlElements.H3, {
-      style: (0, _tailwindRn.default)('text-2xl')
+    return /*#__PURE__*/React.createElement(_LoginBoxUtils.Container, null, /*#__PURE__*/React.createElement(_Text.default, {
+      style: (0, _tailwindRn.default)('text-2xl mb-3')
     }, mode), mode === _LoginBoxUtils.ModeType.SignUp ? /*#__PURE__*/React.createElement(_Text.default, null, "Already a user? ", /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
       onPress: () => setMode(_LoginBoxUtils.ModeType.Login)
     }, "Login")) : /*#__PURE__*/React.createElement(_Text.default, null, "New user? ", /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
@@ -154,15 +154,17 @@
       onPress: handleSubmit(async formData => {
         const jwtData = await (0, _LoginBoxUtils.onSubmit)(formData, mode, setIsSubmitting, setErrorText);
 
-        if (jwtData && jwtData.userId) {
-          alert(`Log in successfully! UserId: ${jwtData.userId}`);
+        if (props.afterSubmit) {
+          props.afterSubmit(jwtData);
         }
       })
     })))), /*#__PURE__*/React.createElement(_Text.default, {
       style: (0, _tailwindRn.default)('text-red-600 mt-2')
     }, errorText || ' '));
-  };
+  }
 
+  ;
+  var _default = LoginBox;
   exports.default = _default;
 });
 //# sourceMappingURL=LoginBox.js.map

@@ -1,6 +1,6 @@
 // import React from 'react';
 import { render } from '@testing-library/react';
-import { generateImage } from 'jsdom-screenshot';
+// import { generateImage } from 'jsdom-screenshot';
 
 // import LoginBox from '../src/components/LoginBox/LoginBox';
 import { fullWidth } from '../LoginBox.stories';
@@ -15,6 +15,6 @@ describe('MyComp - jest test', () => {
     // fireEvent.click(getByTestId('submitBtn'));
 
     expect(container).toMatchSnapshot();
-    expect(await generateImage()).toMatchImageSnapshot(); // TODO: find a way to inject CSS to puppeteer
+    // expect(await generateImage()).toMatchImageSnapshot(); // TODO: find a way to inject CSS to puppeteer
   });
 });

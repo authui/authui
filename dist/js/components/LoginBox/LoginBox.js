@@ -19,8 +19,6 @@ var _reactHookForm = require("react-hook-form");
 
 var _LoginBoxUtils = require("./LoginBoxUtils");
 
-var _es5HtmlElements = require("es5-html-elements");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -29,7 +27,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var _default = () => {
+function LoginBox(props) {
   const [errorText, setErrorText] = React.useState('');
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [mode, setMode] = React.useState(_LoginBoxUtils.ModeType.SignUp);
@@ -38,8 +36,8 @@ var _default = () => {
     handleSubmit,
     errors
   } = (0, _reactHookForm.useForm)();
-  return /*#__PURE__*/React.createElement(_LoginBoxUtils.Container, null, /*#__PURE__*/React.createElement(_es5HtmlElements.H3, {
-    style: (0, _tailwindRn.default)('text-2xl')
+  return /*#__PURE__*/React.createElement(_LoginBoxUtils.Container, null, /*#__PURE__*/React.createElement(_Text.default, {
+    style: (0, _tailwindRn.default)('text-2xl mb-3')
   }, mode), mode === _LoginBoxUtils.ModeType.SignUp ? /*#__PURE__*/React.createElement(_Text.default, null, "Already a user? ", /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
     onPress: () => setMode(_LoginBoxUtils.ModeType.Login)
   }, "Login")) : /*#__PURE__*/React.createElement(_Text.default, null, "New user? ", /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
@@ -77,14 +75,16 @@ var _default = () => {
     onPress: handleSubmit(async formData => {
       const jwtData = await (0, _LoginBoxUtils.onSubmit)(formData, mode, setIsSubmitting, setErrorText);
 
-      if (jwtData && jwtData.userId) {
-        alert(`Log in successfully! UserId: ${jwtData.userId}`);
+      if (props.afterSubmit) {
+        props.afterSubmit(jwtData);
       }
     })
   })))), /*#__PURE__*/React.createElement(_Text.default, {
     style: (0, _tailwindRn.default)('text-red-600 mt-2')
   }, errorText || ' '));
-};
+}
 
+;
+var _default = LoginBox;
 exports.default = _default;
 //# sourceMappingURL=LoginBox.js.map

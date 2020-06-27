@@ -16,9 +16,12 @@ import {
   FormData,
   JwtData
 } from './LoginBoxUtils';
-import { H3 } from 'es5-html-elements';
+// import { H3 } from 'es5-html-elements';
 
-export default () => {
+interface Props {
+  afterSubmit?: (jwtData: JwtData | null) => void
+}
+function LoginBox(props: Props) {
   const [errorText, setErrorText] = React.useState('');
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [mode, setMode] = React.useState(ModeType.SignUp);
@@ -26,7 +29,7 @@ export default () => {
 
   return (
     <Container>
-      <H3 style={tailwind('text-2xl')}>{mode}</H3>
+      <Text style={tailwind('text-2xl mb-3')}>{mode}</Text>
       {mode === ModeType.SignUp ? (
         <Text>
           Already a user? <TouchableText onPress={() => setMode(ModeType.Login)}>Login</TouchableText>
@@ -70,8 +73,8 @@ export default () => {
                   setIsSubmitting,
                   setErrorText
                 );
-                if (jwtData && jwtData.userId) {
-                  alert(`Log in successfully! UserId: ${jwtData.userId}`);
+                if (props.afterSubmit) {
+                  props.afterSubmit(jwtData);
                 }
               })}
             />
@@ -88,3 +91,5 @@ export default () => {
     </Container>
   );
 };
+
+export default LoginBox;

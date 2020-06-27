@@ -5,7 +5,7 @@ Login Components
 - Cross-platform: react-native, react-native-web, styled-components, tailwind-rn.
 - Connect to [AuthUI APIs](https://github.com/authui/authui-server) using graphql-request.
 
-<img src="docs/login-1.png" height="200" />
+<img src="https://raw.githack.com/authui/authui/master/docs/login-1.png" height="200" />
 
 - Live Example: [Codesandbox](https://codesandbox.io/s/authui-example-8jswg?module=/src/LoginBox/LoginBox.tsx)
 
@@ -29,7 +29,7 @@ npm run build
 
 ### Storybook
 
-<img src="docs/storybook-1.png" height="300" />
+<img src="https://raw.githack.com/authui/authui/master/docs/storybook-1.png" height="300" />
 
 ### Contributions
 

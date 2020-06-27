@@ -1,7 +1,8 @@
 {
   "name": "authui-ui",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "main": "dist/js/index.js",
+  "browser": "dist/umd/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/js/index.d.ts",
   "scripts": {
@@ -14,19 +15,21 @@
     "build:babel:cjs": "BABEL_ENV=cjs babel src/index_build.ts --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js",
     "build:babel:esm": "BABEL_ENV=esm babel src/index_build.ts --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
     "build:babel:umd": "BABEL_ENV=umd babel src/index_build.ts --source-maps --extensions \".js\" dist/esm --out-dir dist/umd --plugins=transform-es2015-modules-umd",
-    "build:types": "echo tsc -p tsconfig.gen-dts.json",
+    "build:types": "tsc -p tsconfig.gen-dts.json",
     "clean": "rimraf dist",
     "develop": "yarn build:types && yarn build:babel:esm --skip-initial-build --watch --verbose"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "dependencies": {
     "es5-html-elements": "^0.0.2",
     "graphql-request": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
     "react-hook-form": "^5.7.2",
     "react-native": "^0.62.2",
-    "react-native-web": "^0.12.3",
+    "react-native-web": "^0.13.0",
     "styled-components": "^5.1.1",
     "tailwind-rn": "^1.1.1"
   },
