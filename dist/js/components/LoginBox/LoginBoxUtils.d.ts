@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { TouchableHighlightProps } from 'react-native';
-export declare const API_BASE = "https://authui-api.herokuapp.com/";
+export declare const API_BASE = "https://api.authui.com/";
 export interface FormData {
     userId: string;
     password: string;
 }
 export interface JwtData {
-    userId: string;
+    uuid?: string;
+    accessToken?: string;
+    name?: string;
+    picUrl?: string;
+    username?: string;
+    email: string;
+    [key: string]: string | undefined;
 }
 export declare enum ModeType {
     SignUp = "Sign Up",

@@ -86,7 +86,8 @@
     return newObj;
   }
 
-  const API_BASE = 'https://authui-api.herokuapp.com/';
+  const API_BASE = 'https://api.authui.com/'; // export const API_BASE = 'http://localhost:4001/';
+
   exports.API_BASE = API_BASE;
   let ModeType;
   exports.ModeType = ModeType;

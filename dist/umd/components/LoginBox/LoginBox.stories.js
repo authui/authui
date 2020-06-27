@@ -92,12 +92,20 @@
 
   exports.doc = doc;
 
+  const afterSubmit = jwtData => {
+    if (jwtData && jwtData.email) {
+      alert("jwtData: " + JSON.stringify(jwtData));
+    }
+  };
+
   const fullWidth = () => /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, "Fullscreen:"), /*#__PURE__*/React.createElement("div", {
     style: {
       border: '1px dashed #ddd',
       width: '100vw'
     }
-  }, /*#__PURE__*/React.createElement(_LoginBox.default, null)));
+  }, /*#__PURE__*/React.createElement(_LoginBox.default, {
+    afterSubmit: afterSubmit
+  })));
 
   exports.fullWidth = fullWidth;
 
@@ -105,7 +113,9 @@
     style: {
       width: '500px'
     }
-  }, /*#__PURE__*/React.createElement(_LoginBox.default, null)));
+  }, /*#__PURE__*/React.createElement(_LoginBox.default, {
+    afterSubmit: afterSubmit
+  })));
 
   exports.mobileWidth = mobileWidth;
 });

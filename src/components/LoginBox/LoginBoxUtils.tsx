@@ -12,8 +12,12 @@ export interface FormData {
   password: string
 }
 export interface JwtData {
-  email: string
+  uuid?: string
   accessToken?: string
+  name?: string
+  picUrl?: string
+  username?: string
+  email: string
   [key: string]: string | undefined
 }
 export enum ModeType {
