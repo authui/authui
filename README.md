@@ -1,4 +1,4 @@
-# AuthUI
+# authui-ui
 
 Login Components
 
@@ -7,7 +7,8 @@ Login Components
 
 <img src="https://raw.githack.com/authui/authui/master/docs/login-1.png" height="200" />
 
-- Live Example: [Codesandbox](https://codesandbox.io/s/authui-example-8jswg?module=/src/LoginBox/LoginBox.tsx)
+- Live Example: [import & use Login Component](https://c94e3ef5-cd34-4fe1-8a23-2f490958c461.ws-us02.gitpod.io/#/workspace/gitpod-demo)
+- Live Example: [use Login Component with source code](https://codesandbox.io/s/authui-example-8jswg?module=/src/LoginBox/LoginBox.tsx) (react-native-web)
 
 ## Development
 
