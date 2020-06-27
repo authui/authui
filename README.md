@@ -32,6 +32,8 @@ npm run build
 
 <img src="https://raw.githack.com/authui/authui/master/docs/storybook-1.png" height="300" />
 
+<img src="https://raw.githack.com/authui/authui/master/docs/authui-demo.gif" height="300" />
+
 ### Contributions
 
 Please open a pull request. Any contribution is welcome!
