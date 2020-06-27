@@ -4,14 +4,17 @@ import { Text, TouchableHighlight, TouchableHighlightProps } from 'react-native'
 import { request } from 'graphql-request';
 import { decode } from 'jsonwebtoken';
 
-export const API_BASE = 'https://authui-api.herokuapp.com/';
+export const API_BASE = 'https://api.authui.com/';
+// export const API_BASE = 'http://localhost:4001/';
 
 export interface FormData {
   userId: string
   password: string
 }
 export interface JwtData {
-  userId: string
+  email: string
+  accessToken?: string
+  [key: string]: string | undefined
 }
 export enum ModeType {
   SignUp = 'Sign Up',
