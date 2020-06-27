@@ -70,6 +70,13 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
   },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "parser": "typescript"
+  },
   "jest": {
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$",
     "transform": {

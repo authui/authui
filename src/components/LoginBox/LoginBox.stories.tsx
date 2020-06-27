@@ -16,7 +16,7 @@ export const doc = () => (
 export const fullWidth = () => (
   <div>
     <p>Fullscreen:</p>
-    <div style={{ border: '1px solid #eee', width: '100vw' }}>
+    <div style={{ border: '1px dashed #ddd', width: '100vw' }}>
       <LoginBox />
     </div>
   </div>
@@ -25,7 +25,7 @@ export const fullWidth = () => (
 export const mobileWidth = () => (
   <div>
     <p>Mobile 500px:</p>
-    <div style={{ border: '1px solid #eee', width: '500px' }}>
+    <div style={{ width: '500px' }}>
       <LoginBox />
     </div>
   </div>

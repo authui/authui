@@ -36,7 +36,7 @@ addDecorator((...args) => {
 const loadStories = () => {
   return [
     // Ensure we load Welcome First
-    require.context('../docs', true, /stories\.mdx$/),
+    // require.context('../docs', true, /stories\.mdx$/),
     require.context('../src', true, /stories\.(js|ts|tsx|mdx)$/)
   ];
 }
