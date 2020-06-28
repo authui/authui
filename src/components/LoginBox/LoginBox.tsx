@@ -29,7 +29,7 @@ function LoginBox(props: Props) {
   const { control, handleSubmit, errors } = useForm();
 
   return (
-    <Container>
+    <Container nativeID="authui-container">
       <Text style={tailwind('text-2xl mb-3')}>{mode}</Text>
       {mode === ModeType.SignUp ? (
         <Text>
@@ -40,7 +40,7 @@ function LoginBox(props: Props) {
           New user? <TouchableText onPress={() => setMode(ModeType.SignUp)}>Sign Up</TouchableText>
         </Text>
       )}
-      <View style={tailwind('mt-2 mb-2')}>
+      <View style={tailwind('mt-2 mb-2')} nativeID="authui-form">
         <UserIconBox>
           <UserIcon />
         </UserIconBox>
@@ -62,10 +62,10 @@ function LoginBox(props: Props) {
           onChange={args => args[0].nativeEvent.text}
           defaultValue=""
         />
-        <View style={tailwind('flex flex-row items-center justify-between mt-2')}>
+        <View style={tailwind('flex flex-row items-center justify-between mt-2')} nativeID="authui-footer">
           <View style={{ width: '40%' }}>
             <Button
-              testID="submitBtn"
+              testID="authui-submit"
               title={isSubmitting ? 'Submitting...' : mode === ModeType.SignUp ? 'Sign Up' : 'Log In'}
               onPress={handleSubmit(async (formData: any) => {
                 const jwtData: JwtData | null = await onSubmit(
@@ -89,7 +89,7 @@ function LoginBox(props: Props) {
         </View>
       </View>
 
-      <Text style={tailwind('text-red-600 mt-2')}>{errorText || ' '}</Text>
+      <Text testID="authui-error" style={tailwind('text-red-600 mt-2')}>{errorText || ' '}</Text>
     </Container>
   );
 };

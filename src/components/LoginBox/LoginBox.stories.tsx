@@ -23,7 +23,7 @@ const afterSubmit = (jwtData: JwtData | null) => {
 export const fullWidth = () => (
   <div>
     <p>Fullscreen:</p>
-    <div style={{ border: '1px dashed #ddd', width: '100vw' }}>
+    <div style={{ width: '100vw' }}>
       <LoginBox accountId="MyProductName" afterSubmit={afterSubmit} />
     </div>
   </div>
