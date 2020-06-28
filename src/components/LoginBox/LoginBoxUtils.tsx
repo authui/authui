@@ -86,6 +86,7 @@ export const validateEmail = (email: string) => {
 };
 
 export const onSubmit = async (
+  accountId: string,
   formData: FormData,
   mode: string,
   setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>,
@@ -109,7 +110,7 @@ export const onSubmit = async (
 
   if (mode === ModeType.Login) {
     const query = `mutation {
-      login(email: "${userId}", password: "${password}") {
+      login(accountId: "${accountId}", email: "${userId}", password: "${password}") {
         token
       }
     }`;
@@ -126,7 +127,7 @@ export const onSubmit = async (
     }
   } else if (mode === ModeType.SignUp) {
     const query = `mutation {
-      signup(accountId: "MyProduct", name: "Full Name", email: "${userId}", password: "${password}") {
+      signup(accountId: "${accountId}", name: "Full Name", email: "${userId}", password: "${password}") {
         token
       }
     }`;

@@ -152,7 +152,7 @@
       testID: "submitBtn",
       title: isSubmitting ? 'Submitting...' : mode === _LoginBoxUtils.ModeType.SignUp ? 'Sign Up' : 'Log In',
       onPress: handleSubmit(async formData => {
-        const jwtData = await (0, _LoginBoxUtils.onSubmit)(formData, mode, setIsSubmitting, setErrorText);
+        const jwtData = await (0, _LoginBoxUtils.onSubmit)(props.accountId, formData, mode, setIsSubmitting, setErrorText);
 
         if (props.afterSubmit) {
           props.afterSubmit(jwtData);

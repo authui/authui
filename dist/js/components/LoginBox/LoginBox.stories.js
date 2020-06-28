@@ -37,6 +37,7 @@ const fullWidth = () => /*#__PURE__*/React.createElement("div", null, /*#__PURE_
     width: '100vw'
   }
 }, /*#__PURE__*/React.createElement(_LoginBox.default, {
+  accountId: "MyProductName",
   afterSubmit: afterSubmit
 })));
 
@@ -47,6 +48,7 @@ const mobileWidth = () => /*#__PURE__*/React.createElement("div", null, /*#__PUR
     width: '500px'
   }
 }, /*#__PURE__*/React.createElement(_LoginBox.default, {
+  accountId: "MyProductName",
   afterSubmit: afterSubmit
 })));
 

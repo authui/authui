@@ -19,6 +19,7 @@ import {
 // import { H3 } from 'es5-html-elements';
 
 interface Props {
+  accountId: string
   afterSubmit?: (jwtData: JwtData | null) => void
 }
 function LoginBox(props: Props) {
@@ -68,6 +69,7 @@ function LoginBox(props: Props) {
               title={isSubmitting ? 'Submitting...' : mode === ModeType.SignUp ? 'Sign Up' : 'Log In'}
               onPress={handleSubmit(async (formData: any) => {
                 const jwtData: JwtData | null = await onSubmit(
+                  props.accountId,
                   formData as FormData,
                   mode,
                   setIsSubmitting,

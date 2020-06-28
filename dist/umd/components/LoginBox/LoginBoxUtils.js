@@ -179,7 +179,7 @@
 
   exports.validateEmail = validateEmail;
 
-  const onSubmit = async (formData, mode, setIsSubmitting, setErrorText) => {
+  const onSubmit = async (accountId, formData, mode, setIsSubmitting, setErrorText) => {
     const {
       userId,
       password
@@ -202,7 +202,7 @@
 
     if (mode === ModeType.Login) {
       const query = `mutation {
-      login(email: "${userId}", password: "${password}") {
+      login(accountId: "${accountId}", email: "${userId}", password: "${password}") {
         token
       }
     }`;
@@ -222,7 +222,7 @@
       }
     } else if (mode === ModeType.SignUp) {
       const query = `mutation {
-      signup(accountId: "MyProduct", name: "Full Name", email: "${userId}", password: "${password}") {
+      signup(accountId: "${accountId}", name: "Full Name", email: "${userId}", password: "${password}") {
         token
       }
     }`;

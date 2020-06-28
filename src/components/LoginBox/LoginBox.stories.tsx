@@ -24,7 +24,7 @@ export const fullWidth = () => (
   <div>
     <p>Fullscreen:</p>
     <div style={{ border: '1px dashed #ddd', width: '100vw' }}>
-      <LoginBox afterSubmit={afterSubmit} />
+      <LoginBox accountId="MyProductName" afterSubmit={afterSubmit} />
     </div>
   </div>
 );
@@ -33,7 +33,7 @@ export const mobileWidth = () => (
   <div>
     <p>Mobile 500px:</p>
     <div style={{ width: '500px' }}>
-      <LoginBox afterSubmit={afterSubmit} />
+      <LoginBox accountId="MyProductName" afterSubmit={afterSubmit} />
     </div>
   </div>
 );

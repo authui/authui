@@ -104,6 +104,7 @@
       width: '100vw'
     }
   }, /*#__PURE__*/React.createElement(_LoginBox.default, {
+    accountId: "MyProductName",
     afterSubmit: afterSubmit
   })));
 
@@ -114,6 +115,7 @@
       width: '500px'
     }
   }, /*#__PURE__*/React.createElement(_LoginBox.default, {
+    accountId: "MyProductName",
     afterSubmit: afterSubmit
   })));
 

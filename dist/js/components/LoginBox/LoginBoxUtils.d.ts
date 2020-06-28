@@ -34,4 +34,4 @@ export declare const PasswordIconBox: import("styled-components").StyledComponen
 export declare const UserIcon: (props: any) => JSX.Element;
 export declare const PasswordIcon: (props: any) => JSX.Element;
 export declare const validateEmail: (email: string) => boolean;
-export declare const onSubmit: (formData: FormData, mode: string, setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>, setErrorText: React.Dispatch<React.SetStateAction<string>>) => Promise<JwtData | null>;
+export declare const onSubmit: (accountId: string, formData: FormData, mode: string, setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>, setErrorText: React.Dispatch<React.SetStateAction<string>>) => Promise<JwtData | null>;
