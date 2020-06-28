@@ -1,3 +1,4 @@
+storybook-static
 .jest
 node_modules
 *.log
