@@ -11,6 +11,7 @@
     "build": "webpack --mode production",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -c .storybook -o storybook-static",
+    "serve-storybook": "./node_modules/.bin/http-server ./storybook-static",
     "snapshot": "percy-storybook --widths=320,1280",
     "build:lib": "yarn clean && yarn build:babel && yarn build:types && node ./tools/copyTS.js",
     "build:babel": "concurrently \"yarn build:babel:esm && yarn build:babel:umd\" \"yarn build:babel:cjs\"",
