@@ -12,7 +12,7 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -c .storybook -o storybook-static",
     "snapshot": "percy-storybook --widths=320,1280",
-    "build:lib": "yarn clean && yarn build:babel && yarn build:types && node ./scripts/copyTS.js",
+    "build:lib": "yarn clean && yarn build:babel && yarn build:types && node ./tools/copyTS.js",
     "build:babel": "concurrently \"yarn build:babel:esm && yarn build:babel:umd\" \"yarn build:babel:cjs\"",
     "build:babel:cjs": "BABEL_ENV=cjs babel src/index_build.ts --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js",
     "build:babel:esm": "BABEL_ENV=esm babel src/index_build.ts --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
