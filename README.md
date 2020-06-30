@@ -1,4 +1,4 @@
-# authui-ui
+# Authui-UI
 
 Login Components
 
@@ -25,8 +25,11 @@ Open http://localhost:9009
 
 ```
 npm start
-npm test
 npm run build
+
+npm run build-storybook
+npm run serve-storybook
+npm test
 ```
 
 ### Login Component Templates

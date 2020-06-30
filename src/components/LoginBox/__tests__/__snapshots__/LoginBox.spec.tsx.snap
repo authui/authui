@@ -35,7 +35,7 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
               dir="auto"
               style="color: rgb(0, 0, 139);"
             >
-              Login
+              Log In
             </span>
           </div>
         </div>
@@ -63,13 +63,28 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
             autocorrect="on"
             class="css-textinput-11aywtz r-borderColor-1oav7hm r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-15d164r r-marginLeft-11wrixw r-marginRight-61z16t r-marginTop-156q2ks r-paddingBottom-12rqra3 r-paddingLeft-174d27z r-paddingRight-1qortcd r-paddingTop-13gvty3"
             data-focusable="true"
-            data-testid="userId"
             dir="auto"
+            id="userId"
             placeholder="Email"
             spellcheck="true"
             type="text"
             value=""
           />
+          <div
+            class="css-view-1dbjc4n r-cursor-1loqt21 r-position-u8s1d r-top-19lq7b1 r-touchAction-1otgn73 r-userSelect-lrvibr"
+            data-focusable="true"
+            data-testid="clear-user-id"
+            style="right: 10px;"
+            tabindex="0"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="color: rgb(211, 211, 211);"
+            >
+              ⨉
+            </div>
+          </div>
           <div
             class="css-view-1dbjc4n r-left-1um1uqd r-position-u8s1d r-top-1af0az9"
           >
@@ -90,13 +105,28 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
             autocorrect="on"
             class="css-textinput-11aywtz r-borderColor-1oav7hm r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-15d164r r-marginLeft-11wrixw r-marginRight-61z16t r-marginTop-156q2ks r-paddingBottom-12rqra3 r-paddingLeft-174d27z r-paddingRight-1qortcd r-paddingTop-13gvty3"
             data-focusable="true"
-            data-testid="password"
             dir="auto"
+            id="password"
             placeholder="Password"
             spellcheck="true"
             type="password"
             value=""
           />
+          <div
+            class="css-view-1dbjc4n r-cursor-1loqt21 r-position-u8s1d r-top-1af0az9 r-touchAction-1otgn73 r-userSelect-lrvibr"
+            data-focusable="true"
+            data-testid="clear-password"
+            style="right: 10px;"
+            tabindex="0"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="color: rgb(211, 211, 211);"
+            >
+              ⨉
+            </div>
+          </div>
           <div
             class="css-view-1dbjc4n"
             id="authui-footer"
@@ -173,7 +203,7 @@ exports[`LoginBox render 1`] = `
               dir="auto"
               style="color: rgb(0, 0, 139);"
             >
-              Login
+              Log In
             </span>
           </div>
         </div>
@@ -201,13 +231,28 @@ exports[`LoginBox render 1`] = `
             autocorrect="on"
             class="css-textinput-11aywtz r-borderColor-1oav7hm r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-15d164r r-marginLeft-11wrixw r-marginRight-61z16t r-marginTop-156q2ks r-paddingBottom-12rqra3 r-paddingLeft-174d27z r-paddingRight-1qortcd r-paddingTop-13gvty3"
             data-focusable="true"
-            data-testid="userId"
             dir="auto"
+            id="userId"
             placeholder="Email"
             spellcheck="true"
             type="text"
             value=""
           />
+          <div
+            class="css-view-1dbjc4n r-cursor-1loqt21 r-position-u8s1d r-top-19lq7b1 r-touchAction-1otgn73 r-userSelect-lrvibr"
+            data-focusable="true"
+            data-testid="clear-user-id"
+            style="right: 10px;"
+            tabindex="0"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="color: rgb(211, 211, 211);"
+            >
+              ⨉
+            </div>
+          </div>
           <div
             class="css-view-1dbjc4n r-left-1um1uqd r-position-u8s1d r-top-1af0az9"
           >
@@ -228,13 +273,28 @@ exports[`LoginBox render 1`] = `
             autocorrect="on"
             class="css-textinput-11aywtz r-borderColor-1oav7hm r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-15d164r r-marginLeft-11wrixw r-marginRight-61z16t r-marginTop-156q2ks r-paddingBottom-12rqra3 r-paddingLeft-174d27z r-paddingRight-1qortcd r-paddingTop-13gvty3"
             data-focusable="true"
-            data-testid="password"
             dir="auto"
+            id="password"
             placeholder="Password"
             spellcheck="true"
             type="password"
             value=""
           />
+          <div
+            class="css-view-1dbjc4n r-cursor-1loqt21 r-position-u8s1d r-top-1af0az9 r-touchAction-1otgn73 r-userSelect-lrvibr"
+            data-focusable="true"
+            data-testid="clear-password"
+            style="right: 10px;"
+            tabindex="0"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+              style="color: rgb(211, 211, 211);"
+            >
+              ⨉
+            </div>
+          </div>
           <div
             class="css-view-1dbjc4n"
             id="authui-footer"

@@ -22,7 +22,7 @@ export interface JwtData {
 }
 export enum ModeType {
   SignUp = 'Sign Up',
-  Login = 'Login'
+  Login = 'Log In'
 }
 export enum IdFieldType {
   Username = 'Username',
@@ -47,6 +47,11 @@ export interface TouchableTextProps extends TouchableHighlightProps {
 export const TouchableText = (props: TouchableTextProps) => (
   <TouchableHighlight {...props}>
     <Text style={{ color: 'darkblue' }}>{props.children}</Text>
+  </TouchableHighlight>
+);
+export const LightTextLink = (props: TouchableTextProps) => (
+  <TouchableHighlight {...props}>
+    <Text style={{ color: 'lightgray' }}>{props.children}</Text>
   </TouchableHighlight>
 );
 export const TextField = styled.TextInput`

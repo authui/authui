@@ -16,7 +16,7 @@ export const doc = () => (
 
 const afterSubmit = (jwtData: JwtData | null) => {
   if (jwtData && jwtData.email) {
-    alert("jwtData: " + JSON.stringify(jwtData));
+    console.log("jwtData: " + JSON.stringify(jwtData));
   }
 }
 
