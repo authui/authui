@@ -8,6 +8,7 @@ import {
   ModeType,
   Container,
   TouchableText,
+  LightTextLink,
   UserIconBox,
   PasswordIconBox,
   TextField,
@@ -26,14 +27,14 @@ function LoginBox(props: Props) {
   const [errorText, setErrorText] = React.useState('');
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [mode, setMode] = React.useState(ModeType.SignUp);
-  const { control, handleSubmit, errors } = useForm();
+  const { control, setValue, handleSubmit, errors } = useForm();
 
   return (
     <Container nativeID="authui-container">
       <Text style={tailwind('text-2xl mb-3')}>{mode}</Text>
       {mode === ModeType.SignUp ? (
         <Text>
-          Already a user? <TouchableText onPress={() => setMode(ModeType.Login)}>Login</TouchableText>
+          Already a user? <TouchableText onPress={() => setMode(ModeType.Login)}>Log In</TouchableText>
         </Text>
       ) : (
         <Text>
@@ -45,23 +46,26 @@ function LoginBox(props: Props) {
           <UserIcon />
         </UserIconBox>
         <Controller
-          as={(props: any) => <TextField placeholder={idField} testID="userId" {...props} />}
+          as={(props: any) => <TextField placeholder={idField} nativeID="userId" {...props} />}
           control={control}
           name="userId"
           onChange={args => args[0].nativeEvent.text}
           defaultValue=""
         />
+        <LightTextLink testID="clear-user-id" style={{ position: 'absolute', top: 16, right: 10 }} onPress={() => setValue([{ userId: '' }])}>⨉</LightTextLink>
 
         <PasswordIconBox>
           <PasswordIcon />
         </PasswordIconBox>
         <Controller
-          as={(props: any) => <TextField placeholder="Password" secureTextEntry={true} testID="password" {...props} />}
+          as={(props: any) => <TextField placeholder="Password" secureTextEntry={true} nativeID="password" {...props} />}
           control={control}
           name="password"
           onChange={args => args[0].nativeEvent.text}
           defaultValue=""
         />
+        <LightTextLink testID="clear-password" style={{ position: 'absolute', top: 66, right: 10 }} onPress={() => setValue([{ password: '' }])}>⨉</LightTextLink>
+
         <View style={tailwind('flex flex-row items-center justify-between mt-2')} nativeID="authui-footer">
           <View style={{ width: '40%' }}>
             <Button
