@@ -72,10 +72,8 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
           />
           <div
             class="css-view-1dbjc4n r-cursor-1loqt21 r-position-u8s1d r-top-19lq7b1 r-touchAction-1otgn73 r-userSelect-lrvibr"
-            data-focusable="true"
             data-testid="clear-user-id"
             style="right: 10px;"
-            tabindex="0"
           >
             <div
               class="css-text-901oao"
@@ -114,10 +112,8 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
           />
           <div
             class="css-view-1dbjc4n r-cursor-1loqt21 r-position-u8s1d r-top-1af0az9 r-touchAction-1otgn73 r-userSelect-lrvibr"
-            data-focusable="true"
             data-testid="clear-password"
             style="right: 10px;"
-            tabindex="0"
           >
             <div
               class="css-text-901oao"
@@ -240,10 +236,8 @@ exports[`LoginBox render 1`] = `
           />
           <div
             class="css-view-1dbjc4n r-cursor-1loqt21 r-position-u8s1d r-top-19lq7b1 r-touchAction-1otgn73 r-userSelect-lrvibr"
-            data-focusable="true"
             data-testid="clear-user-id"
             style="right: 10px;"
-            tabindex="0"
           >
             <div
               class="css-text-901oao"
@@ -282,10 +276,8 @@ exports[`LoginBox render 1`] = `
           />
           <div
             class="css-view-1dbjc4n r-cursor-1loqt21 r-position-u8s1d r-top-1af0az9 r-touchAction-1otgn73 r-userSelect-lrvibr"
-            data-focusable="true"
             data-testid="clear-password"
             style="right: 10px;"
-            tabindex="0"
           >
             <div
               class="css-text-901oao"
