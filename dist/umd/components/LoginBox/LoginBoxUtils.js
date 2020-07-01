@@ -18,7 +18,7 @@
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.onSubmit = exports.validateEmail = exports.PasswordIcon = exports.UserIcon = exports.PasswordIconBox = exports.UserIconBox = exports.TextField = exports.TouchableText = exports.Container = exports.idField = exports.IdFieldType = exports.ModeType = exports.API_BASE = void 0;
+  exports.onSubmit = exports.validateEmail = exports.PasswordIcon = exports.UserIcon = exports.PasswordIconBox = exports.UserIconBox = exports.TextField = exports.LightTextLink = exports.TouchableText = exports.Container = exports.idField = exports.IdFieldType = exports.ModeType = exports.API_BASE = void 0;
 
   var React = _interopRequireWildcard();
 
@@ -94,7 +94,7 @@
 
   (function (ModeType) {
     ModeType["SignUp"] = "Sign Up";
-    ModeType["Login"] = "Login";
+    ModeType["Login"] = "Log In";
   })(ModeType || (exports.ModeType = ModeType = {}));
 
   let IdFieldType;
@@ -127,6 +127,14 @@
   }, props.children));
 
   exports.TouchableText = TouchableText;
+
+  const LightTextLink = props => /*#__PURE__*/React.createElement(_TouchableHighlight.default, props, /*#__PURE__*/React.createElement(_Text.default, {
+    style: {
+      color: 'lightgray'
+    }
+  }, props.children));
+
+  exports.LightTextLink = LightTextLink;
   const TextField = _native.default.TextInput`
   border: 1px solid #aaa;
   border-radius: 4px;
@@ -217,7 +225,12 @@
         setIsSubmitting(false);
         return jwtData; // logged in successfully!
       } catch (e) {
-        const err = `${e}`.indexOf('Invalid') >= 0 ? `Invalid ${idField} or Password.` : 'Unknown error.';
+        let err = 'Unknown error.';
+
+        if (`${e}`.indexOf('Invalid') >= 0 || `${e}`.indexOf('No user found') >= 0) {
+          err = `Invalid ${idField} or Password.`;
+        }
+
         setErrorText(`Failed to login. ${err}`);
       }
     } else if (mode === ModeType.SignUp) {

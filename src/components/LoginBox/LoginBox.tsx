@@ -52,7 +52,7 @@ function LoginBox(props: Props) {
           onChange={args => args[0].nativeEvent.text}
           defaultValue=""
         />
-        <LightTextLink testID="clear-user-id" style={{ position: 'absolute', top: 16, right: 10 }} onPress={() => setValue([{ userId: '' }])}>⨉</LightTextLink>
+        <LightTextLink accessible={false} testID="clear-user-id" style={{ position: 'absolute', top: 16, right: 10 }} onPress={() => setValue([{ userId: '' }])}>⨉</LightTextLink>
 
         <PasswordIconBox>
           <PasswordIcon />
@@ -64,7 +64,7 @@ function LoginBox(props: Props) {
           onChange={args => args[0].nativeEvent.text}
           defaultValue=""
         />
-        <LightTextLink testID="clear-password" style={{ position: 'absolute', top: 66, right: 10 }} onPress={() => setValue([{ password: '' }])}>⨉</LightTextLink>
+        <LightTextLink accessible={false} testID="clear-password" style={{ position: 'absolute', top: 66, right: 10 }} onPress={() => setValue([{ password: '' }])}>⨉</LightTextLink>
 
         <View style={tailwind('flex flex-row items-center justify-between mt-2')} nativeID="authui-footer">
           <View style={{ width: '40%' }}>

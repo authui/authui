@@ -27,13 +27,12 @@ exports.doc = doc;
 
 const afterSubmit = jwtData => {
   if (jwtData && jwtData.email) {
-    alert("jwtData: " + JSON.stringify(jwtData));
+    console.log("jwtData: " + JSON.stringify(jwtData));
   }
 };
 
 const fullWidth = () => /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, "Fullscreen:"), /*#__PURE__*/React.createElement("div", {
   style: {
-    border: '1px dashed #ddd',
     width: '100vw'
   }
 }, /*#__PURE__*/React.createElement(_LoginBox.default, {

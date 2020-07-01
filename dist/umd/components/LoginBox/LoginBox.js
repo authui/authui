@@ -112,44 +112,71 @@
     const [mode, setMode] = React.useState(_LoginBoxUtils.ModeType.SignUp);
     const {
       control,
+      setValue,
       handleSubmit,
       errors
     } = (0, _reactHookForm.useForm)();
-    return /*#__PURE__*/React.createElement(_LoginBoxUtils.Container, null, /*#__PURE__*/React.createElement(_Text.default, {
+    return /*#__PURE__*/React.createElement(_LoginBoxUtils.Container, {
+      nativeID: "authui-container"
+    }, /*#__PURE__*/React.createElement(_Text.default, {
       style: (0, _tailwindRn.default)('text-2xl mb-3')
     }, mode), mode === _LoginBoxUtils.ModeType.SignUp ? /*#__PURE__*/React.createElement(_Text.default, null, "Already a user? ", /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
       onPress: () => setMode(_LoginBoxUtils.ModeType.Login)
-    }, "Login")) : /*#__PURE__*/React.createElement(_Text.default, null, "New user? ", /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
+    }, "Log In")) : /*#__PURE__*/React.createElement(_Text.default, null, "New user? ", /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
       onPress: () => setMode(_LoginBoxUtils.ModeType.SignUp)
     }, "Sign Up")), /*#__PURE__*/React.createElement(_View.default, {
-      style: (0, _tailwindRn.default)('mt-2 mb-2')
+      style: (0, _tailwindRn.default)('mt-2 mb-2'),
+      nativeID: "authui-form"
     }, /*#__PURE__*/React.createElement(_LoginBoxUtils.UserIconBox, null, /*#__PURE__*/React.createElement(_LoginBoxUtils.UserIcon, null)), /*#__PURE__*/React.createElement(_reactHookForm.Controller, {
       as: props => /*#__PURE__*/React.createElement(_LoginBoxUtils.TextField, _extends({
         placeholder: _LoginBoxUtils.idField,
-        testID: "userId"
+        nativeID: "userId"
       }, props)),
       control: control,
       name: "userId",
       onChange: args => args[0].nativeEvent.text,
       defaultValue: ""
-    }), /*#__PURE__*/React.createElement(_LoginBoxUtils.PasswordIconBox, null, /*#__PURE__*/React.createElement(_LoginBoxUtils.PasswordIcon, null)), /*#__PURE__*/React.createElement(_reactHookForm.Controller, {
+    }), /*#__PURE__*/React.createElement(_LoginBoxUtils.LightTextLink, {
+      accessible: false,
+      testID: "clear-user-id",
+      style: {
+        position: 'absolute',
+        top: 16,
+        right: 10
+      },
+      onPress: () => setValue([{
+        userId: ''
+      }])
+    }, "\u2A09"), /*#__PURE__*/React.createElement(_LoginBoxUtils.PasswordIconBox, null, /*#__PURE__*/React.createElement(_LoginBoxUtils.PasswordIcon, null)), /*#__PURE__*/React.createElement(_reactHookForm.Controller, {
       as: props => /*#__PURE__*/React.createElement(_LoginBoxUtils.TextField, _extends({
         placeholder: "Password",
         secureTextEntry: true,
-        testID: "password"
+        nativeID: "password"
       }, props)),
       control: control,
       name: "password",
       onChange: args => args[0].nativeEvent.text,
       defaultValue: ""
-    }), /*#__PURE__*/React.createElement(_View.default, {
-      style: (0, _tailwindRn.default)('flex flex-row items-center justify-between mt-2')
+    }), /*#__PURE__*/React.createElement(_LoginBoxUtils.LightTextLink, {
+      accessible: false,
+      testID: "clear-password",
+      style: {
+        position: 'absolute',
+        top: 66,
+        right: 10
+      },
+      onPress: () => setValue([{
+        password: ''
+      }])
+    }, "\u2A09"), /*#__PURE__*/React.createElement(_View.default, {
+      style: (0, _tailwindRn.default)('flex flex-row items-center justify-between mt-2'),
+      nativeID: "authui-footer"
     }, /*#__PURE__*/React.createElement(_View.default, {
       style: {
         width: '40%'
       }
     }, /*#__PURE__*/React.createElement(_Button.default, {
-      testID: "submitBtn",
+      testID: "authui-submit",
       title: isSubmitting ? 'Submitting...' : mode === _LoginBoxUtils.ModeType.SignUp ? 'Sign Up' : 'Log In',
       onPress: handleSubmit(async formData => {
         const jwtData = await (0, _LoginBoxUtils.onSubmit)(props.accountId, formData, mode, setIsSubmitting, setErrorText);
@@ -159,6 +186,7 @@
         }
       })
     })))), /*#__PURE__*/React.createElement(_Text.default, {
+      testID: "authui-error",
       style: (0, _tailwindRn.default)('text-red-600 mt-2')
     }, errorText || ' '));
   }

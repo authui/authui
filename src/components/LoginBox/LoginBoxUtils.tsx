@@ -127,7 +127,10 @@ export const onSubmit = async (
       setIsSubmitting(false);
       return jwtData // logged in successfully!
     } catch (e) {
-      const err = `${e}`.indexOf('Invalid') >= 0 ? `Invalid ${idField} or Password.` : 'Unknown error.';
+      let err = 'Unknown error.';
+      if (`${e}`.indexOf('Invalid') >= 0 || `${e}`.indexOf('No user found') >= 0) {
+        err = `Invalid ${idField} or Password.`;
+      }
       setErrorText(`Failed to login. ${err}`);
     }
   } else if (mode === ModeType.SignUp) {

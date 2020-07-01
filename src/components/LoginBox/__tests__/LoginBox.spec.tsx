@@ -1,6 +1,6 @@
 // import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import { generateImage } from 'jsdom-screenshot';
+// import { generateImage } from 'jsdom-screenshot';
 
 // import LoginBox from '../src/components/LoginBox/LoginBox';
 import { fullWidth } from '../LoginBox.stories';

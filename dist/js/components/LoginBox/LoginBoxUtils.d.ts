@@ -16,7 +16,7 @@ export interface JwtData {
 }
 export declare enum ModeType {
     SignUp = "Sign Up",
-    Login = "Login"
+    Login = "Log In"
 }
 export declare enum IdFieldType {
     Username = "Username",
@@ -28,6 +28,7 @@ export interface TouchableTextProps extends TouchableHighlightProps {
     children?: string | React.ReactElement;
 }
 export declare const TouchableText: (props: TouchableTextProps) => JSX.Element;
+export declare const LightTextLink: (props: TouchableTextProps) => JSX.Element;
 export declare const TextField: import("styled-components").StyledComponent<typeof import("react-native").TextInput, import("styled-components").DefaultTheme, {}, never>;
 export declare const UserIconBox: import("styled-components").StyledComponent<typeof import("react-native").View, import("styled-components").DefaultTheme, {}, never>;
 export declare const PasswordIconBox: import("styled-components").StyledComponent<typeof import("react-native").View, import("styled-components").DefaultTheme, {}, never>;
