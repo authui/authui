@@ -31,23 +31,23 @@ function LoginBox(props: Props) {
   const { control, setValue, handleSubmit, errors } = useForm();
 
   return (
-    <Container nativeID="authui-container" style={props.style}>
+    <Container testID="authui-container" style={props.style}>
       <Text style={tailwind('text-2xl mb-3')}>{mode}</Text>
       {mode === ModeType.SignUp ? (
         <Text>
-          Already a user? <TouchableText onPress={() => setMode(ModeType.Login)}>Log In</TouchableText>
+          Already a user? <TouchableText testID="authui-login-link" onPress={() => setMode(ModeType.Login)}>Log In</TouchableText>
         </Text>
       ) : (
         <Text>
-          New user? <TouchableText onPress={() => setMode(ModeType.SignUp)}>Sign Up</TouchableText>
+          New user? <TouchableText testID="authui-signup-link" onPress={() => setMode(ModeType.SignUp)}>Sign Up</TouchableText>
         </Text>
       )}
-      <View style={tailwind('mt-2 mb-2')} nativeID="authui-form">
+      <View style={tailwind('mt-2 mb-2')} testID="authui-form">
         <UserIconBox>
           <UserIcon />
         </UserIconBox>
         <Controller
-          as={(props: any) => <TextField placeholder={idField} nativeID="userId" {...props} />}
+          as={(props: any) => <TextField placeholder={idField} testID="userId" {...props} />}
           control={control}
           name="userId"
           onChange={args => args[0].nativeEvent.text}
@@ -61,7 +61,7 @@ function LoginBox(props: Props) {
               <PasswordIcon />
             </PasswordIconBox>
             <Controller
-              as={(props: any) => <TextField placeholder="Password" secureTextEntry={true} nativeID="password" {...props} />}
+              as={(props: any) => <TextField placeholder="Password" secureTextEntry={true} testID="password" {...props} />}
               control={control}
               name="password"
               onChange={args => args[0].nativeEvent.text}
@@ -71,8 +71,8 @@ function LoginBox(props: Props) {
           </>
         )}
 
-        <View style={tailwind('flex flex-row items-center justify-between mt-2')} nativeID="authui-footer">
-          <View style={{ width: '60%' }} nativeID="authui-footer-buttons">
+        <View style={tailwind('flex flex-row items-center justify-between mt-2')} testID="authui-footer">
+          <View style={{ width: '60%' }} testID="authui-footer-buttons">
             <Button
               testID="authui-submit"
               title={isSubmitting ? 'Submitting...' : mode}
@@ -90,7 +90,7 @@ function LoginBox(props: Props) {
               })}
             />
           </View>
-          <View nativeID="authui-forgot">
+          <View testID="authui-forgot">
             {mode === ModeType.Login && (
               <TouchableText onPress={() => setMode(ModeType.Forgot)}>
                 Forgot Password?

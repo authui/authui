@@ -13,7 +13,7 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
     >
       <div
         class="css-view-1dbjc4n r-backgroundColor-14lw9ot r-borderColor-4s656n r-borderRadius-kdyh1x r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-p1pxzi r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1mnahxq r-maxWidth-1ik5qf4 r-paddingBottom-k8qxaj r-paddingLeft-b5h31w r-paddingRight-1ah4tor r-paddingTop-1knelpx"
-        id="authui-container"
+        data-testid="authui-container"
       >
         <div
           class="css-text-901oao"
@@ -30,6 +30,7 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
           <div
             class="css-view-1dbjc4n r-cursor-1loqt21 r-display-xoduu5 r-touchAction-1otgn73 r-userSelect-lrvibr"
             data-focusable="true"
+            data-testid="authui-login-link"
             tabindex="0"
           >
             <span
@@ -43,7 +44,7 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
         </div>
         <div
           class="css-view-1dbjc4n"
-          id="authui-form"
+          data-testid="authui-form"
           style="margin-bottom: 8px; margin-top: 8px;"
         >
           <div
@@ -65,8 +66,8 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
             autocorrect="on"
             class="css-textinput-11aywtz r-borderColor-1oav7hm r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-15d164r r-marginLeft-11wrixw r-marginRight-61z16t r-marginTop-156q2ks r-paddingBottom-12rqra3 r-paddingLeft-174d27z r-paddingRight-1qortcd r-paddingTop-13gvty3"
             data-focusable="true"
+            data-testid="userId"
             dir="auto"
-            id="userId"
             placeholder="Email"
             spellcheck="true"
             type="text"
@@ -105,8 +106,8 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
             autocorrect="on"
             class="css-textinput-11aywtz r-borderColor-1oav7hm r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-15d164r r-marginLeft-11wrixw r-marginRight-61z16t r-marginTop-156q2ks r-paddingBottom-12rqra3 r-paddingLeft-174d27z r-paddingRight-1qortcd r-paddingTop-13gvty3"
             data-focusable="true"
+            data-testid="password"
             dir="auto"
-            id="password"
             placeholder="Password"
             spellcheck="true"
             type="password"
@@ -127,12 +128,12 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
           </div>
           <div
             class="css-view-1dbjc4n"
-            id="authui-footer"
+            data-testid="authui-footer"
             style="align-items: center; display: flex; flex-direction: row; justify-content: space-between; margin-top: 8px;"
           >
             <div
               class="css-view-1dbjc4n"
-              id="authui-footer-buttons"
+              data-testid="authui-footer-buttons"
               style="width: 60%;"
             >
               <div
@@ -153,7 +154,7 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
             </div>
             <div
               class="css-view-1dbjc4n"
-              id="authui-forgot"
+              data-testid="authui-forgot"
             />
           </div>
         </div>
@@ -187,7 +188,7 @@ exports[`LoginBox render 1`] = `
     >
       <div
         class="css-view-1dbjc4n r-backgroundColor-14lw9ot r-borderColor-4s656n r-borderRadius-kdyh1x r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-p1pxzi r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1mnahxq r-maxWidth-1ik5qf4 r-paddingBottom-k8qxaj r-paddingLeft-b5h31w r-paddingRight-1ah4tor r-paddingTop-1knelpx"
-        id="authui-container"
+        data-testid="authui-container"
       >
         <div
           class="css-text-901oao"
@@ -204,6 +205,7 @@ exports[`LoginBox render 1`] = `
           <div
             class="css-view-1dbjc4n r-cursor-1loqt21 r-display-xoduu5 r-touchAction-1otgn73 r-userSelect-lrvibr"
             data-focusable="true"
+            data-testid="authui-login-link"
             tabindex="0"
           >
             <span
@@ -217,7 +219,7 @@ exports[`LoginBox render 1`] = `
         </div>
         <div
           class="css-view-1dbjc4n"
-          id="authui-form"
+          data-testid="authui-form"
           style="margin-bottom: 8px; margin-top: 8px;"
         >
           <div
@@ -239,8 +241,8 @@ exports[`LoginBox render 1`] = `
             autocorrect="on"
             class="css-textinput-11aywtz r-borderColor-1oav7hm r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-15d164r r-marginLeft-11wrixw r-marginRight-61z16t r-marginTop-156q2ks r-paddingBottom-12rqra3 r-paddingLeft-174d27z r-paddingRight-1qortcd r-paddingTop-13gvty3"
             data-focusable="true"
+            data-testid="userId"
             dir="auto"
-            id="userId"
             placeholder="Email"
             spellcheck="true"
             type="text"
@@ -279,8 +281,8 @@ exports[`LoginBox render 1`] = `
             autocorrect="on"
             class="css-textinput-11aywtz r-borderColor-1oav7hm r-borderRadius-z2wwpe r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-15d164r r-marginLeft-11wrixw r-marginRight-61z16t r-marginTop-156q2ks r-paddingBottom-12rqra3 r-paddingLeft-174d27z r-paddingRight-1qortcd r-paddingTop-13gvty3"
             data-focusable="true"
+            data-testid="password"
             dir="auto"
-            id="password"
             placeholder="Password"
             spellcheck="true"
             type="password"
@@ -301,12 +303,12 @@ exports[`LoginBox render 1`] = `
           </div>
           <div
             class="css-view-1dbjc4n"
-            id="authui-footer"
+            data-testid="authui-footer"
             style="align-items: center; display: flex; flex-direction: row; justify-content: space-between; margin-top: 8px;"
           >
             <div
               class="css-view-1dbjc4n"
-              id="authui-footer-buttons"
+              data-testid="authui-footer-buttons"
               style="width: 60%;"
             >
               <div
@@ -327,7 +329,7 @@ exports[`LoginBox render 1`] = `
             </div>
             <div
               class="css-view-1dbjc4n"
-              id="authui-forgot"
+              data-testid="authui-forgot"
             />
           </div>
         </div>
