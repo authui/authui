@@ -151,6 +151,10 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
                 </div>
               </div>
             </div>
+            <div
+              class="css-view-1dbjc4n"
+              id="authui-forgot"
+            />
           </div>
         </div>
         <div
@@ -321,6 +325,10 @@ exports[`LoginBox render 1`] = `
                 </div>
               </div>
             </div>
+            <div
+              class="css-view-1dbjc4n"
+              id="authui-forgot"
+            />
           </div>
         </div>
         <div

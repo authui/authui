@@ -90,11 +90,13 @@ function LoginBox(props: Props) {
               })}
             />
           </View>
-          {mode === ModeType.Login && (
-            <TouchableText onPress={() => setMode(ModeType.Forgot)}>
-              Forgot Password?
-            </TouchableText>
-          )}
+          <View nativeID="authui-forgot">
+            {mode === ModeType.Login && (
+              <TouchableText onPress={() => setMode(ModeType.Forgot)}>
+                Forgot Password?
+              </TouchableText>
+            )}
+          </View>
         </View>
       </View>
 

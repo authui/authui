@@ -30,3 +30,9 @@ export async function takeScreenshot(browser, page, filename) {
   const { screenshotsPath } = browser;
   return await page.screenshot({ path: `${screenshotsPath}/${filename}` });
 }
+
+export async function expectText(page, xpath, value) {
+  const xpathEl = (await page.$x(xpath))[0];
+  const txt = await page.evaluate(el => el.textContent, xpathEl);
+  expect(txt).toEqual(value);
+}
