@@ -22,7 +22,8 @@ export interface JwtData {
 }
 export enum ModeType {
   SignUp = 'Sign Up',
-  Login = 'Log In'
+  Login = 'Log In',
+  Forgot = 'Reset Password'
 }
 export enum IdFieldType {
   Username = 'Username',
@@ -36,6 +37,7 @@ export const Container = styled.View`
   margin: 0 auto;
   border: 1px solid #efefef;
   border-radius: 6px;
+  background-color: #fff;
 
   @media (max-width: 768px) {
     max-width: inherit;
@@ -100,15 +102,22 @@ export const onSubmit = async (
   const { userId, password } = formData;
   // console.log('formData', formData);
 
-  if (!userId || !password) {
-    setErrorText(`${idField} and Password are required.`);
-    return null;
+  if (mode === ModeType.Forgot) {
+    if (!userId) {
+      setErrorText(`${idField} is required.`);
+      return null;
+    }  
+  } else {
+    if (!userId || !password) {
+      setErrorText(`${idField} and Password are required.`);
+      return null;
+    }
   }
   if (idField === IdFieldType.Email && !validateEmail(formData.userId)) {
     setErrorText('Invalid email address.');
     return null;
   }
-  if (password.length < 6) {
+  if (password && password.length < 6) {
     setErrorText(`Password must be 6 characters or more.`);
     return null;
   }
@@ -149,6 +158,21 @@ export const onSubmit = async (
     } catch (e) {
       const err = `${e}`.indexOf('Unique constraint failed') >= 0 ? 'User already existed.' : 'Unknown error.';
       setErrorText(`Failed to sign up. ` + err);
+    }
+  } else if (mode === ModeType.Forgot) {
+    const query = `mutation {
+      resetPassword(accountId: "${accountId}", email: "${userId}") {
+        token
+      }
+    }`;
+    try {
+      setIsSubmitting(true);
+      await request(API_BASE, query);
+      setErrorText('');
+      setIsSubmitting(false);
+      return null
+    } catch (e) {
+      setErrorText(`Failed to sign up. ` + e);
     }
   }
   setIsSubmitting(false);

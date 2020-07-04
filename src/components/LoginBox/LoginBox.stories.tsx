@@ -21,19 +21,21 @@ const afterSubmit = (jwtData: JwtData | null) => {
 }
 
 export const fullWidth = () => (
-  <div>
+  <div style={{ backgroundColor: '#eee' }}>
     <p>Fullscreen:</p>
     <div style={{ width: '100vw' }}>
       <LoginBox accountId="MyProductName" afterSubmit={afterSubmit} />
     </div>
+    <p>Fullscreen End</p>
   </div>
 );
 
 export const mobileWidth = () => (
-  <div>
-    <p>Mobile 500px:</p>
-    <div style={{ width: '500px' }}>
-      <LoginBox accountId="MyProductName" afterSubmit={afterSubmit} />
+  <div style={{ backgroundColor: '#eee' }}>
+    <p>Mobile 375px:</p>
+    <div style={{ width: '375px' }}>
+      <LoginBox accountId="MyProductName" afterSubmit={afterSubmit} style={{ margin: 10 }} />
     </div>
+    <p>Mobile End</p>
   </div>
 );

@@ -22,6 +22,7 @@ import {
 interface Props {
   accountId: string
   afterSubmit?: (jwtData: JwtData | null) => void
+  style?: object
 }
 function LoginBox(props: Props) {
   const [errorText, setErrorText] = React.useState('');
@@ -30,7 +31,7 @@ function LoginBox(props: Props) {
   const { control, setValue, handleSubmit, errors } = useForm();
 
   return (
-    <Container nativeID="authui-container">
+    <Container nativeID="authui-container" style={props.style}>
       <Text style={tailwind('text-2xl mb-3')}>{mode}</Text>
       {mode === ModeType.SignUp ? (
         <Text>
@@ -54,23 +55,27 @@ function LoginBox(props: Props) {
         />
         <LightTextLink accessible={false} testID="clear-user-id" style={{ position: 'absolute', top: 16, right: 10 }} onPress={() => setValue([{ userId: '' }])}>⨉</LightTextLink>
 
-        <PasswordIconBox>
-          <PasswordIcon />
-        </PasswordIconBox>
-        <Controller
-          as={(props: any) => <TextField placeholder="Password" secureTextEntry={true} nativeID="password" {...props} />}
-          control={control}
-          name="password"
-          onChange={args => args[0].nativeEvent.text}
-          defaultValue=""
-        />
-        <LightTextLink accessible={false} testID="clear-password" style={{ position: 'absolute', top: 66, right: 10 }} onPress={() => setValue([{ password: '' }])}>⨉</LightTextLink>
+        {mode !== ModeType.Forgot && (
+          <>
+            <PasswordIconBox>
+              <PasswordIcon />
+            </PasswordIconBox>
+            <Controller
+              as={(props: any) => <TextField placeholder="Password" secureTextEntry={true} nativeID="password" {...props} />}
+              control={control}
+              name="password"
+              onChange={args => args[0].nativeEvent.text}
+              defaultValue=""
+            />
+            <LightTextLink accessible={false} testID="clear-password" style={{ position: 'absolute', top: 66, right: 10 }} onPress={() => setValue([{ password: '' }])}>⨉</LightTextLink>
+          </>
+        )}
 
         <View style={tailwind('flex flex-row items-center justify-between mt-2')} nativeID="authui-footer">
-          <View style={{ width: '40%' }}>
+          <View style={{ width: '60%' }} nativeID="authui-footer-buttons">
             <Button
               testID="authui-submit"
-              title={isSubmitting ? 'Submitting...' : mode === ModeType.SignUp ? 'Sign Up' : 'Log In'}
+              title={isSubmitting ? 'Submitting...' : mode}
               onPress={handleSubmit(async (formData: any) => {
                 const jwtData: JwtData | null = await onSubmit(
                   props.accountId,
@@ -85,11 +90,11 @@ function LoginBox(props: Props) {
               })}
             />
           </View>
-          {/* {mode === ModeType.Login && (
-            <TouchableText onPress={() => {}}>
+          {mode === ModeType.Login && (
+            <TouchableText onPress={() => setMode(ModeType.Forgot)}>
               Forgot Password?
             </TouchableText>
-          )} */}
+          )}
         </View>
       </View>
 
