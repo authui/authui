@@ -2,7 +2,9 @@
 
 exports[`LoginBox click Submit - validation should fail 1`] = `
 <div>
-  <div>
+  <div
+    style="background-color: rgb(238, 238, 238);"
+  >
     <p>
       Fullscreen:
     </p>
@@ -10,7 +12,7 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
       style="width: 100vw;"
     >
       <div
-        class="css-view-1dbjc4n r-borderColor-4s656n r-borderRadius-kdyh1x r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-p1pxzi r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1mnahxq r-maxWidth-1ik5qf4 r-paddingBottom-k8qxaj r-paddingLeft-b5h31w r-paddingRight-1ah4tor r-paddingTop-1knelpx"
+        class="css-view-1dbjc4n r-backgroundColor-14lw9ot r-borderColor-4s656n r-borderRadius-kdyh1x r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-p1pxzi r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1mnahxq r-maxWidth-1ik5qf4 r-paddingBottom-k8qxaj r-paddingLeft-b5h31w r-paddingRight-1ah4tor r-paddingTop-1knelpx"
         id="authui-container"
       >
         <div
@@ -130,7 +132,8 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
           >
             <div
               class="css-view-1dbjc4n"
-              style="width: 40%;"
+              id="authui-footer-buttons"
+              style="width: 60%;"
             >
               <div
                 class="css-cursor-18t94o4 css-view-1dbjc4n r-backgroundColor-14sbq61 r-borderRadius-1jkafct r-cursor-1loqt21 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-lrvibr"
@@ -160,13 +163,18 @@ exports[`LoginBox click Submit - validation should fail 1`] = `
         </div>
       </div>
     </div>
+    <p>
+      Fullscreen End
+    </p>
   </div>
 </div>
 `;
 
 exports[`LoginBox render 1`] = `
 <div>
-  <div>
+  <div
+    style="background-color: rgb(238, 238, 238);"
+  >
     <p>
       Fullscreen:
     </p>
@@ -174,7 +182,7 @@ exports[`LoginBox render 1`] = `
       style="width: 100vw;"
     >
       <div
-        class="css-view-1dbjc4n r-borderColor-4s656n r-borderRadius-kdyh1x r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-p1pxzi r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1mnahxq r-maxWidth-1ik5qf4 r-paddingBottom-k8qxaj r-paddingLeft-b5h31w r-paddingRight-1ah4tor r-paddingTop-1knelpx"
+        class="css-view-1dbjc4n r-backgroundColor-14lw9ot r-borderColor-4s656n r-borderRadius-kdyh1x r-borderStyle-1phboty r-borderWidth-rs99b7 r-marginBottom-p1pxzi r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1mnahxq r-maxWidth-1ik5qf4 r-paddingBottom-k8qxaj r-paddingLeft-b5h31w r-paddingRight-1ah4tor r-paddingTop-1knelpx"
         id="authui-container"
       >
         <div
@@ -294,7 +302,8 @@ exports[`LoginBox render 1`] = `
           >
             <div
               class="css-view-1dbjc4n"
-              style="width: 40%;"
+              id="authui-footer-buttons"
+              style="width: 60%;"
             >
               <div
                 class="css-cursor-18t94o4 css-view-1dbjc4n r-backgroundColor-14sbq61 r-borderRadius-1jkafct r-cursor-1loqt21 r-touchAction-1otgn73 r-transitionProperty-1i6wzkk r-userSelect-lrvibr"
@@ -324,6 +333,9 @@ exports[`LoginBox render 1`] = `
         </div>
       </div>
     </div>
+    <p>
+      Fullscreen End
+    </p>
   </div>
 </div>
 `;
