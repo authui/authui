@@ -98,25 +98,36 @@
     }
   };
 
-  const fullWidth = () => /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, "Fullscreen:"), /*#__PURE__*/React.createElement("div", {
+  const fullWidth = () => /*#__PURE__*/React.createElement("div", {
+    style: {
+      backgroundColor: '#eee'
+    }
+  }, /*#__PURE__*/React.createElement("p", null, "Fullscreen:"), /*#__PURE__*/React.createElement("div", {
     style: {
       width: '100vw'
     }
   }, /*#__PURE__*/React.createElement(_LoginBox.default, {
     accountId: "MyProductName",
     afterSubmit: afterSubmit
-  })));
+  })), /*#__PURE__*/React.createElement("p", null, "Fullscreen End"));
 
   exports.fullWidth = fullWidth;
 
-  const mobileWidth = () => /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, "Mobile 500px:"), /*#__PURE__*/React.createElement("div", {
+  const mobileWidth = () => /*#__PURE__*/React.createElement("div", {
     style: {
-      width: '500px'
+      backgroundColor: '#eee'
+    }
+  }, /*#__PURE__*/React.createElement("p", null, "Mobile 375px:"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: '375px'
     }
   }, /*#__PURE__*/React.createElement(_LoginBox.default, {
     accountId: "MyProductName",
-    afterSubmit: afterSubmit
-  })));
+    afterSubmit: afterSubmit,
+    style: {
+      margin: 10
+    }
+  })), /*#__PURE__*/React.createElement("p", null, "Mobile End"));
 
   exports.mobileWidth = mobileWidth;
 });

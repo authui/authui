@@ -16,7 +16,8 @@ export interface JwtData {
 }
 export declare enum ModeType {
     SignUp = "Sign Up",
-    Login = "Log In"
+    Login = "Log In",
+    Forgot = "Reset Password"
 }
 export declare enum IdFieldType {
     Username = "Username",

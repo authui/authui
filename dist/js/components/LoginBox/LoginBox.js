@@ -38,7 +38,8 @@ function LoginBox(props) {
     errors
   } = (0, _reactHookForm.useForm)();
   return /*#__PURE__*/React.createElement(_LoginBoxUtils.Container, {
-    nativeID: "authui-container"
+    nativeID: "authui-container",
+    style: props.style
   }, /*#__PURE__*/React.createElement(_Text.default, {
     style: (0, _tailwindRn.default)('text-2xl mb-3')
   }, mode), mode === _LoginBoxUtils.ModeType.SignUp ? /*#__PURE__*/React.createElement(_Text.default, null, "Already a user? ", /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
@@ -68,7 +69,7 @@ function LoginBox(props) {
     onPress: () => setValue([{
       userId: ''
     }])
-  }, "\u2A09"), /*#__PURE__*/React.createElement(_LoginBoxUtils.PasswordIconBox, null, /*#__PURE__*/React.createElement(_LoginBoxUtils.PasswordIcon, null)), /*#__PURE__*/React.createElement(_reactHookForm.Controller, {
+  }, "\u2A09"), mode !== _LoginBoxUtils.ModeType.Forgot && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_LoginBoxUtils.PasswordIconBox, null, /*#__PURE__*/React.createElement(_LoginBoxUtils.PasswordIcon, null)), /*#__PURE__*/React.createElement(_reactHookForm.Controller, {
     as: props => /*#__PURE__*/React.createElement(_LoginBoxUtils.TextField, _extends({
       placeholder: "Password",
       secureTextEntry: true,
@@ -89,16 +90,17 @@ function LoginBox(props) {
     onPress: () => setValue([{
       password: ''
     }])
-  }, "\u2A09"), /*#__PURE__*/React.createElement(_View.default, {
+  }, "\u2A09")), /*#__PURE__*/React.createElement(_View.default, {
     style: (0, _tailwindRn.default)('flex flex-row items-center justify-between mt-2'),
     nativeID: "authui-footer"
   }, /*#__PURE__*/React.createElement(_View.default, {
     style: {
-      width: '40%'
-    }
+      width: '60%'
+    },
+    nativeID: "authui-footer-buttons"
   }, /*#__PURE__*/React.createElement(_Button.default, {
     testID: "authui-submit",
-    title: isSubmitting ? 'Submitting...' : mode === _LoginBoxUtils.ModeType.SignUp ? 'Sign Up' : 'Log In',
+    title: isSubmitting ? 'Submitting...' : mode,
     onPress: handleSubmit(async formData => {
       const jwtData = await (0, _LoginBoxUtils.onSubmit)(props.accountId, formData, mode, setIsSubmitting, setErrorText);
 
@@ -106,7 +108,9 @@ function LoginBox(props) {
         props.afterSubmit(jwtData);
       }
     })
-  })))), /*#__PURE__*/React.createElement(_Text.default, {
+  })), mode === _LoginBoxUtils.ModeType.Login && /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
+    onPress: () => setMode(_LoginBoxUtils.ModeType.Forgot)
+  }, "Forgot Password?"))), /*#__PURE__*/React.createElement(_Text.default, {
     testID: "authui-error",
     style: (0, _tailwindRn.default)('text-red-600 mt-2')
   }, errorText || ' '));

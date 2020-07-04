@@ -95,6 +95,7 @@
   (function (ModeType) {
     ModeType["SignUp"] = "Sign Up";
     ModeType["Login"] = "Log In";
+    ModeType["Forgot"] = "Reset Password";
   })(ModeType || (exports.ModeType = ModeType = {}));
 
   let IdFieldType;
@@ -113,6 +114,7 @@
   margin: 0 auto;
   border: 1px solid #efefef;
   border-radius: 6px;
+  background-color: #fff;
 
   @media (max-width: 768px) {
     max-width: inherit;
@@ -193,9 +195,16 @@
       password
     } = formData; // console.log('formData', formData);
 
-    if (!userId || !password) {
-      setErrorText(`${idField} and Password are required.`);
-      return null;
+    if (mode === ModeType.Forgot) {
+      if (!userId) {
+        setErrorText(`${idField} is required.`);
+        return null;
+      }
+    } else {
+      if (!userId || !password) {
+        setErrorText(`${idField} and Password are required.`);
+        return null;
+      }
     }
 
     if (idField === IdFieldType.Email && !validateEmail(formData.userId)) {
@@ -203,7 +212,7 @@
       return null;
     }
 
-    if (password.length < 6) {
+    if (password && password.length < 6) {
       setErrorText(`Password must be 6 characters or more.`);
       return null;
     }
@@ -252,6 +261,22 @@
       } catch (e) {
         const err = `${e}`.indexOf('Unique constraint failed') >= 0 ? 'User already existed.' : 'Unknown error.';
         setErrorText(`Failed to sign up. ` + err);
+      }
+    } else if (mode === ModeType.Forgot) {
+      const query = `mutation {
+      resetPassword(accountId: "${accountId}", email: "${userId}") {
+        token
+      }
+    }`;
+
+      try {
+        setIsSubmitting(true);
+        await (0, _graphqlRequest.request)(API_BASE, query);
+        setErrorText('');
+        setIsSubmitting(false);
+        return null;
+      } catch (e) {
+        setErrorText(`Failed to sign up. ` + e);
       }
     }
 
