@@ -31,6 +31,12 @@ export enum IdFieldType {
 }
 export const idField = IdFieldType.Email;
 
+export interface onSubmitInterface {
+  jwtData?: JwtData
+  error?: string
+  success?: string
+}
+
 export const Container = styled.View`
   padding: 20px 20px;
   max-width: 500px;
@@ -96,30 +102,25 @@ export const onSubmit = async (
   accountId: string,
   formData: FormData,
   mode: string,
-  setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>,
-  setErrorText: React.Dispatch<React.SetStateAction<string>>
-): Promise<JwtData | null> => {
+  setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>
+): Promise<onSubmitInterface | null> => {
   const { userId, password } = formData;
-  // console.log('formData', formData);
+  let error = ''
 
   if (mode === ModeType.Forgot) {
     if (!userId) {
-      setErrorText(`${idField} is required.`);
-      return null;
+      return { error: `${idField} is required.` };
     }  
   } else {
     if (!userId || !password) {
-      setErrorText(`${idField} and Password are required.`);
-      return null;
+      return { error: `${idField} and Password are required.` };
     }
   }
   if (idField === IdFieldType.Email && !validateEmail(formData.userId)) {
-    setErrorText('Invalid email address.');
-    return null;
+    return { error: 'Invalid email address.' };
   }
   if (password && password.length < 6) {
-    setErrorText(`Password must be 6 characters or more.`);
-    return null;
+    return { error: `Password must be 6 characters or more.` };
   }
 
   if (mode === ModeType.Login) {
@@ -131,16 +132,16 @@ export const onSubmit = async (
     try {
       setIsSubmitting(true);
       const { login } = await request(API_BASE, query);
-      setErrorText('');
+      error = '';
       const jwtData: JwtData = decode(login.token) as JwtData;
       setIsSubmitting(false);
-      return jwtData // logged in successfully!
+      return { jwtData } // logged in successfully!
     } catch (e) {
       let err = 'Unknown error.';
       if (`${e}`.indexOf('Invalid') >= 0 || `${e}`.indexOf('No user found') >= 0) {
         err = `Invalid ${idField} or Password.`;
       }
-      setErrorText(`Failed to login. ${err}`);
+      error = `Failed to login. ${err}`;
     }
   } else if (mode === ModeType.SignUp) {
     const query = `mutation {
@@ -151,13 +152,13 @@ export const onSubmit = async (
     try {
       setIsSubmitting(true);
       const { signup } = await request(API_BASE, query);
-      setErrorText('');
+      error = '';
       const jwtData: JwtData = decode(signup.token) as JwtData;
       setIsSubmitting(false);
-      return jwtData // signed up successfully!
+      return { jwtData } // signed up successfully!
     } catch (e) {
       const err = `${e}`.indexOf('Unique constraint failed') >= 0 ? 'User already existed.' : 'Unknown error.';
-      setErrorText(`Failed to sign up. ` + err);
+      error = `Failed to sign up. ` + err;
     }
   } else if (mode === ModeType.Forgot) {
     const query = `mutation {
@@ -168,13 +169,16 @@ export const onSubmit = async (
     try {
       setIsSubmitting(true);
       await request(API_BASE, query);
-      setErrorText('');
+      error = '';
       setIsSubmitting(false);
       return null
     } catch (e) {
-      setErrorText(`Failed to sign up. ` + e);
+      error = `Failed to sign up. ` + e
     }
   }
   setIsSubmitting(false);
+  if (error) {
+    return { error };
+  }
   return null
 };

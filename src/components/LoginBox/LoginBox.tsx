@@ -15,17 +15,23 @@ import {
   onSubmit,
   idField,
   FormData,
-  JwtData
+  JwtData,
+  onSubmitInterface
 } from './LoginBoxUtils';
 // import { H3 } from 'es5-html-elements';
 
+export interface afterSubmitInterface {
+  error?: string
+  success?: string
+}
 interface Props {
   accountId: string
-  afterSubmit?: (jwtData: JwtData | null) => void
+  afterSubmit?: (jwtData: JwtData | null) => afterSubmitInterface
   style?: object
 }
 function LoginBox(props: Props) {
   const [errorText, setErrorText] = React.useState('');
+  const [successText, setSuccessText] = React.useState('');
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [mode, setMode] = React.useState(ModeType.SignUp);
   const { control, setValue, handleSubmit, errors } = useForm();
@@ -77,15 +83,22 @@ function LoginBox(props: Props) {
               testID="authui-submit"
               title={isSubmitting ? 'Submitting...' : mode}
               onPress={handleSubmit(async (formData: any) => {
-                const jwtData: JwtData | null = await onSubmit(
+                const submitRet: onSubmitInterface | null = await onSubmit(
                   props.accountId,
                   formData as FormData,
                   mode,
-                  setIsSubmitting,
-                  setErrorText
+                  setIsSubmitting
                 );
-                if (props.afterSubmit) {
-                  props.afterSubmit(jwtData);
+                if (submitRet) {
+                  if (submitRet.error) {
+                    setErrorText(submitRet.error)
+                  } else if (submitRet.jwtData && props.afterSubmit) {
+                    const retObj: afterSubmitInterface = await props.afterSubmit(submitRet.jwtData);
+                    if (retObj) {
+                      setErrorText(retObj.error || '')
+                      setSuccessText(retObj.success || '')
+                    }
+                  }
                 }
               })}
             />
@@ -100,7 +113,15 @@ function LoginBox(props: Props) {
         </View>
       </View>
 
-      <Text testID="authui-error" style={tailwind('text-red-600 mt-2')}>{errorText || ' '}</Text>
+      {errorText ? (
+        <Text testID="authui-error" style={tailwind('text-red-600 mt-2')}>{errorText}</Text>
+      ) : (
+        successText ? (
+          <Text testID="authui-success" style={tailwind('text-green-600 mt-2')}>{successText}</Text>
+        ) : (
+          <Text>{' '}</Text>
+        )
+      )}
     </Container>
   );
 };

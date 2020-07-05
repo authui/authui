@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LoginBox from './LoginBox';
+import LoginBox, { afterSubmitInterface } from './LoginBox';
 import { JwtData } from './LoginBoxUtils';
 
 export default {
@@ -14,9 +14,12 @@ export const doc = () => (
   </div>
 );
 
-const afterSubmit = (jwtData: JwtData | null) => {
+const afterSubmit = (jwtData: JwtData | null): afterSubmitInterface => {
   if (jwtData && jwtData.email) {
     console.log("jwtData: " + JSON.stringify(jwtData));
+    return { success: 'Logged in successfully.' }
+  } else {
+    return { error: 'Failed to login' }
   }
 }
 

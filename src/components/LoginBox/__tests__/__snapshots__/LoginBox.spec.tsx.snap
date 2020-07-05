@@ -335,9 +335,7 @@ exports[`LoginBox render 1`] = `
         </div>
         <div
           class="css-text-901oao"
-          data-testid="authui-error"
           dir="auto"
-          style="color: rgb(229, 62, 62); margin-top: 8px;"
         >
            
         </div>
