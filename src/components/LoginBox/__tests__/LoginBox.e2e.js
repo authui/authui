@@ -26,7 +26,7 @@ describe('AuthUI-Login-Component', () => {
 
     await (await page.$x(`//input[@data-testid='password']`))[0].type(`a`);
 
-    await (await page.$x(`//div[@data-testid="authui-submit"]`))[0].click();
+    await (await page.$x(`//div[@data-testid='authui-submit']`))[0].click();
 
     await expectText(page, `//div[@data-testid='authui-error']`, `Invalid email address.`);
 
@@ -42,8 +42,7 @@ describe('AuthUI-Login-Component', () => {
 
     await (await page.$x(`//input[@data-testid='password']`))[0].type(`demo111`);
 
-    await (await page.$x(`//div[@data-testid="authui-submit"]`))[0].click();
-
+    await (await page.$x(`//div[@data-testid='authui-submit']`))[0].click();
 
     await takeScreenshot(browser, page, `${thisTest.name}.png`);
   });
@@ -65,18 +64,16 @@ describe('AuthUI-Login-Component', () => {
 
     await (await page.$x(`//div[@data-testid='authui-submit']`))[0].click();
 
-    await (await page.$x(`//input[@data-testid='userId']`))[0].click();
+    await (await page.$x(`//*[@data-testid="userId"]`))[0].click();
 
-    await (await page.$x(`//input[@data-testid='userId']`))[0].type(`a@a.a`);
+    await (await page.$x(`//*[@data-testid="userId"]`))[0].type(`a@a.a`);
 
     await (await page.$x(`//div[@data-testid='authui-submit']`))[0].click();
-
 
     await takeScreenshot(browser, page, `${thisTest.name}.png`);
   });
 
-  //__TEST_CONTENT__
-
+  
   afterAll(async () => {
     await browser.close();
   });
