@@ -28,6 +28,13 @@ exports.doc = doc;
 const afterSubmit = jwtData => {
   if (jwtData && jwtData.email) {
     console.log("jwtData: " + JSON.stringify(jwtData));
+    return {
+      success: 'Logged in successfully.'
+    };
+  } else {
+    return {
+      error: 'Failed to login'
+    };
   }
 };
 

@@ -24,6 +24,11 @@ export declare enum IdFieldType {
     Email = "Email"
 }
 export declare const idField = IdFieldType.Email;
+export interface onSubmitInterface {
+    jwtData?: JwtData;
+    error?: string;
+    success?: string;
+}
 export declare const Container: import("styled-components").StyledComponent<typeof import("react-native").View, import("styled-components").DefaultTheme, {}, never>;
 export interface TouchableTextProps extends TouchableHighlightProps {
     children?: string | React.ReactElement;
@@ -36,4 +41,4 @@ export declare const PasswordIconBox: import("styled-components").StyledComponen
 export declare const UserIcon: (props: any) => JSX.Element;
 export declare const PasswordIcon: (props: any) => JSX.Element;
 export declare const validateEmail: (email: string) => boolean;
-export declare const onSubmit: (accountId: string, formData: FormData, mode: string, setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>, setErrorText: React.Dispatch<React.SetStateAction<string>>) => Promise<JwtData | null>;
+export declare const onSubmit: (accountId: string, formData: FormData, mode: string, setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>) => Promise<onSubmitInterface | null>;

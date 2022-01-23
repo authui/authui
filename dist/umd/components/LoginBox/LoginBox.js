@@ -108,6 +108,7 @@
 
   function LoginBox(props) {
     const [errorText, setErrorText] = React.useState('');
+    const [successText, setSuccessText] = React.useState('');
     const [isSubmitting, setIsSubmitting] = React.useState(false);
     const [mode, setMode] = React.useState(_LoginBoxUtils.ModeType.SignUp);
     const {
@@ -117,21 +118,23 @@
       errors
     } = (0, _reactHookForm.useForm)();
     return /*#__PURE__*/React.createElement(_LoginBoxUtils.Container, {
-      nativeID: "authui-container",
+      testID: "authui-container",
       style: props.style
     }, /*#__PURE__*/React.createElement(_Text.default, {
       style: (0, _tailwindRn.default)('text-2xl mb-3')
     }, mode), mode === _LoginBoxUtils.ModeType.SignUp ? /*#__PURE__*/React.createElement(_Text.default, null, "Already a user? ", /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
+      testID: "authui-login-link",
       onPress: () => setMode(_LoginBoxUtils.ModeType.Login)
     }, "Log In")) : /*#__PURE__*/React.createElement(_Text.default, null, "New user? ", /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
+      testID: "authui-signup-link",
       onPress: () => setMode(_LoginBoxUtils.ModeType.SignUp)
     }, "Sign Up")), /*#__PURE__*/React.createElement(_View.default, {
       style: (0, _tailwindRn.default)('mt-2 mb-2'),
-      nativeID: "authui-form"
+      testID: "authui-form"
     }, /*#__PURE__*/React.createElement(_LoginBoxUtils.UserIconBox, null, /*#__PURE__*/React.createElement(_LoginBoxUtils.UserIcon, null)), /*#__PURE__*/React.createElement(_reactHookForm.Controller, {
       as: props => /*#__PURE__*/React.createElement(_LoginBoxUtils.TextField, _extends({
         placeholder: _LoginBoxUtils.idField,
-        nativeID: "userId"
+        testID: "userId"
       }, props)),
       control: control,
       name: "userId",
@@ -152,7 +155,7 @@
       as: props => /*#__PURE__*/React.createElement(_LoginBoxUtils.TextField, _extends({
         placeholder: "Password",
         secureTextEntry: true,
-        nativeID: "password"
+        testID: "password"
       }, props)),
       control: control,
       name: "password",
@@ -171,28 +174,42 @@
       }])
     }, "\u2A09")), /*#__PURE__*/React.createElement(_View.default, {
       style: (0, _tailwindRn.default)('flex flex-row items-center justify-between mt-2'),
-      nativeID: "authui-footer"
+      testID: "authui-footer"
     }, /*#__PURE__*/React.createElement(_View.default, {
       style: {
         width: '60%'
       },
-      nativeID: "authui-footer-buttons"
+      testID: "authui-footer-buttons"
     }, /*#__PURE__*/React.createElement(_Button.default, {
       testID: "authui-submit",
       title: isSubmitting ? 'Submitting...' : mode,
       onPress: handleSubmit(async formData => {
-        const jwtData = await (0, _LoginBoxUtils.onSubmit)(props.accountId, formData, mode, setIsSubmitting, setErrorText);
+        const submitRet = await (0, _LoginBoxUtils.onSubmit)(props.accountId, formData, mode, setIsSubmitting);
 
-        if (props.afterSubmit) {
-          props.afterSubmit(jwtData);
+        if (submitRet) {
+          if (submitRet.error) {
+            setErrorText(submitRet.error);
+          } else if (submitRet.jwtData && props.afterSubmit) {
+            const retObj = await props.afterSubmit(submitRet.jwtData);
+
+            if (retObj) {
+              setErrorText(retObj.error || '');
+              setSuccessText(retObj.success || '');
+            }
+          }
         }
       })
-    })), mode === _LoginBoxUtils.ModeType.Login && /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
+    })), /*#__PURE__*/React.createElement(_View.default, {
+      testID: "authui-forgot"
+    }, mode === _LoginBoxUtils.ModeType.Login && /*#__PURE__*/React.createElement(_LoginBoxUtils.TouchableText, {
       onPress: () => setMode(_LoginBoxUtils.ModeType.Forgot)
-    }, "Forgot Password?"))), /*#__PURE__*/React.createElement(_Text.default, {
+    }, "Forgot Password?")))), errorText ? /*#__PURE__*/React.createElement(_Text.default, {
       testID: "authui-error",
       style: (0, _tailwindRn.default)('text-red-600 mt-2')
-    }, errorText || ' '));
+    }, errorText) : successText ? /*#__PURE__*/React.createElement(_Text.default, {
+      testID: "authui-success",
+      style: (0, _tailwindRn.default)('text-green-600 mt-2')
+    }, successText) : /*#__PURE__*/React.createElement(_Text.default, null, ' '));
   }
 
   ;

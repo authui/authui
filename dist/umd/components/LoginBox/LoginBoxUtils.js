@@ -189,32 +189,37 @@
 
   exports.validateEmail = validateEmail;
 
-  const onSubmit = async (accountId, formData, mode, setIsSubmitting, setErrorText) => {
+  const onSubmit = async (accountId, formData, mode, setIsSubmitting) => {
     const {
       userId,
       password
-    } = formData; // console.log('formData', formData);
+    } = formData;
+    let error = '';
 
     if (mode === ModeType.Forgot) {
       if (!userId) {
-        setErrorText(`${idField} is required.`);
-        return null;
+        return {
+          error: `${idField} is required.`
+        };
       }
     } else {
       if (!userId || !password) {
-        setErrorText(`${idField} and Password are required.`);
-        return null;
+        return {
+          error: `${idField} and Password are required.`
+        };
       }
     }
 
     if (idField === IdFieldType.Email && !validateEmail(formData.userId)) {
-      setErrorText('Invalid email address.');
-      return null;
+      return {
+        error: 'Invalid email address.'
+      };
     }
 
     if (password && password.length < 6) {
-      setErrorText(`Password must be 6 characters or more.`);
-      return null;
+      return {
+        error: `Password must be 6 characters or more.`
+      };
     }
 
     if (mode === ModeType.Login) {
@@ -229,10 +234,12 @@
         const {
           login
         } = await (0, _graphqlRequest.request)(API_BASE, query);
-        setErrorText('');
+        error = '';
         const jwtData = (0, _jsonwebtoken.decode)(login.token);
         setIsSubmitting(false);
-        return jwtData; // logged in successfully!
+        return {
+          jwtData
+        }; // logged in successfully!
       } catch (e) {
         let err = 'Unknown error.';
 
@@ -240,7 +247,7 @@
           err = `Invalid ${idField} or Password.`;
         }
 
-        setErrorText(`Failed to login. ${err}`);
+        error = `Failed to login. ${err}`;
       }
     } else if (mode === ModeType.SignUp) {
       const query = `mutation {
@@ -254,13 +261,15 @@
         const {
           signup
         } = await (0, _graphqlRequest.request)(API_BASE, query);
-        setErrorText('');
+        error = '';
         const jwtData = (0, _jsonwebtoken.decode)(signup.token);
         setIsSubmitting(false);
-        return jwtData; // signed up successfully!
+        return {
+          jwtData
+        }; // signed up successfully!
       } catch (e) {
         const err = `${e}`.indexOf('Unique constraint failed') >= 0 ? 'User already existed.' : 'Unknown error.';
-        setErrorText(`Failed to sign up. ` + err);
+        error = `Failed to sign up. ` + err;
       }
     } else if (mode === ModeType.Forgot) {
       const query = `mutation {
@@ -272,15 +281,22 @@
       try {
         setIsSubmitting(true);
         await (0, _graphqlRequest.request)(API_BASE, query);
-        setErrorText('');
+        error = '';
         setIsSubmitting(false);
         return null;
       } catch (e) {
-        setErrorText(`Failed to sign up. ` + e);
+        error = `Failed to sign up. ` + e;
       }
     }
 
     setIsSubmitting(false);
+
+    if (error) {
+      return {
+        error
+      };
+    }
+
     return null;
   };
 

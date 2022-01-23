@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.setupBrowser = setupBrowser;
 exports.newPage = newPage;
 exports.takeScreenshot = takeScreenshot;
+exports.expectText = expectText;
 
 var _puppeteer = _interopRequireDefault(require("puppeteer"));
 
@@ -43,5 +44,11 @@ async function takeScreenshot(browser, page, filename) {
   return await page.screenshot({
     path: `${screenshotsPath}/${filename}`
   });
+}
+
+async function expectText(page, xpath, value) {
+  const xpathEl = (await page.$x(xpath))[0];
+  const txt = await page.evaluate(el => el.textContent, xpathEl);
+  expect(txt).toEqual(value);
 }
 //# sourceMappingURL=e2eUtil.js.map
