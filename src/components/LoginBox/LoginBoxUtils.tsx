@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import { Text, TouchableHighlight, TouchableHighlightProps } from 'react-native';
 import { request } from 'graphql-request';
-import { decode } from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
 
 export const API_BASE = 'https://api.authui.com/';
 // export const API_BASE = 'http://localhost:4001/';
@@ -133,7 +133,7 @@ export const onSubmit = async (
       setIsSubmitting(true);
       const { login } = await request(API_BASE, query);
       error = '';
-      const jwtData: JwtData = decode(login.token) as JwtData;
+      const jwtData: JwtData = jwtDecode(login.token) as JwtData;
       setIsSubmitting(false);
       return { jwtData } // logged in successfully!
     } catch (e) {
@@ -153,7 +153,7 @@ export const onSubmit = async (
       setIsSubmitting(true);
       const { signup } = await request(API_BASE, query);
       error = '';
-      const jwtData: JwtData = decode(signup.token) as JwtData;
+      const jwtData: JwtData = jwtDecode(signup.token) as JwtData;
       setIsSubmitting(false);
       return { jwtData } // signed up successfully!
     } catch (e) {

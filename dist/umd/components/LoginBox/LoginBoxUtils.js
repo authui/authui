@@ -2,17 +2,17 @@
 
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["exports", "graphql-request", "jsonwebtoken", "react", "styled-components/native", "react-native-web/dist/cjs/exports/Text", "react-native-web/dist/cjs/exports/TouchableHighlight"], factory);
+    define(["exports", "graphql-request", "react", "styled-components/native", "react-native-web/dist/cjs/exports/Text", "react-native-web/dist/cjs/exports/TouchableHighlight", "jwt-decode"], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require("graphql-request"), require("jsonwebtoken"), require("react"), require("styled-components/native"), require("react-native-web/dist/cjs/exports/Text"), require("react-native-web/dist/cjs/exports/TouchableHighlight"));
+    factory(exports, require("graphql-request"), require("react"), require("styled-components/native"), require("react-native-web/dist/cjs/exports/Text"), require("react-native-web/dist/cjs/exports/TouchableHighlight"), require("jwt-decode"));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.graphqlRequest, global.jsonwebtoken, global.react, global.native, global.Text, global.TouchableHighlight);
+    factory(mod.exports, global.graphqlRequest, global.react, global.native, global.Text, global.TouchableHighlight, global.jwtDecode);
     global.undefined = mod.exports;
   }
-})(void 0, function (exports, _graphqlRequest, _jsonwebtoken) {
+})(void 0, function (exports, _graphqlRequest) {
   "use strict";
 
   Object.defineProperty(exports, "__esModule", {
@@ -27,6 +27,8 @@
   var _Text = _interopRequireDefault();
 
   var _TouchableHighlight = _interopRequireDefault();
+
+  var _jwtDecode = _interopRequireDefault();
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -235,7 +237,7 @@
           login
         } = await (0, _graphqlRequest.request)(API_BASE, query);
         error = '';
-        const jwtData = (0, _jsonwebtoken.decode)(login.token);
+        const jwtData = (0, _jwtDecode.default)(login.token);
         setIsSubmitting(false);
         return {
           jwtData
@@ -262,7 +264,7 @@
           signup
         } = await (0, _graphqlRequest.request)(API_BASE, query);
         error = '';
-        const jwtData = (0, _jsonwebtoken.decode)(signup.token);
+        const jwtData = (0, _jwtDecode.default)(signup.token);
         setIsSubmitting(false);
         return {
           jwtData

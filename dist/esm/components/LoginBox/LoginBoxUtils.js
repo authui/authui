@@ -15,7 +15,7 @@ var _TouchableHighlight = _interopRequireDefault(require("react-native-web/dist/
 
 var _graphqlRequest = require("graphql-request");
 
-var _jsonwebtoken = require("jsonwebtoken");
+var _jwtDecode = _interopRequireDefault(require("jwt-decode"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -172,7 +172,7 @@ const onSubmit = async (accountId, formData, mode, setIsSubmitting) => {
         login
       } = await (0, _graphqlRequest.request)(API_BASE, query);
       error = '';
-      const jwtData = (0, _jsonwebtoken.decode)(login.token);
+      const jwtData = (0, _jwtDecode.default)(login.token);
       setIsSubmitting(false);
       return {
         jwtData
@@ -199,7 +199,7 @@ const onSubmit = async (accountId, formData, mode, setIsSubmitting) => {
         signup
       } = await (0, _graphqlRequest.request)(API_BASE, query);
       error = '';
-      const jwtData = (0, _jsonwebtoken.decode)(signup.token);
+      const jwtData = (0, _jwtDecode.default)(signup.token);
       setIsSubmitting(false);
       return {
         jwtData
