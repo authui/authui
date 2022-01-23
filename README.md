@@ -63,4 +63,5 @@ npm test
 
 ### Contributions
 
-Please open a pull request. Any contribution is welcome!
+- Please open a pull request. Any contribution is welcome!
+- [CHANGELOG](CHANGELOG.md)
