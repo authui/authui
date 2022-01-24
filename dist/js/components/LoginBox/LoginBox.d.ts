@@ -8,6 +8,7 @@ interface Props {
     accountId: string;
     afterSubmit?: (jwtData: JwtData | null) => afterSubmitInterface;
     style?: object;
+    defaultMode?: 'Log In' | 'Sign Up' | 'Reset Password';
 }
 declare function LoginBox(props: Props): JSX.Element;
 export default LoginBox;

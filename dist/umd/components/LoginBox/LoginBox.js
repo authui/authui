@@ -110,7 +110,7 @@
     const [errorText, setErrorText] = React.useState('');
     const [successText, setSuccessText] = React.useState('');
     const [isSubmitting, setIsSubmitting] = React.useState(false);
-    const [mode, setMode] = React.useState(_LoginBoxUtils.ModeType.SignUp);
+    const [mode, setMode] = React.useState(props.defaultMode ?? _LoginBoxUtils.ModeType.Login);
     const {
       control,
       setValue,

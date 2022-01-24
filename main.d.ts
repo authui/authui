@@ -4,3 +4,5 @@ declare module 'jsdom-screenshot' {
   function generateImage(): any;
   function toMatchImageSnapshot(): any;
 }
+
+declare module 'react-native-web';

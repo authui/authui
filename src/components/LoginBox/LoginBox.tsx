@@ -1,6 +1,6 @@
 import * as React from 'react';
 import tailwind from 'tailwind-rn';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button } from 'react-native-web';
 import { useForm, Controller } from 'react-hook-form';
 import {
   UserIcon,
@@ -28,12 +28,13 @@ interface Props {
   accountId: string
   afterSubmit?: (jwtData: JwtData | null) => afterSubmitInterface
   style?: object
+  defaultMode?: 'Log In' | 'Sign Up' | 'Reset Password'
 }
 function LoginBox(props: Props) {
   const [errorText, setErrorText] = React.useState('');
   const [successText, setSuccessText] = React.useState('');
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [mode, setMode] = React.useState(ModeType.SignUp);
+  const [mode, setMode] = React.useState(props.defaultMode ?? ModeType.Login);
   const { control, setValue, handleSubmit, errors } = useForm();
 
   return (
