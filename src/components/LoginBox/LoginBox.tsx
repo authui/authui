@@ -1,6 +1,6 @@
 import * as React from 'react';
 import tailwind from 'tailwind-rn';
-import { Text, View, Button } from 'react-native-web';
+import { Text, View, Button } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import {
   UserIcon,
